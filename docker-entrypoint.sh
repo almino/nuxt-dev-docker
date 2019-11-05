@@ -6,8 +6,12 @@ if [ ! -f "package-lock.json" ];
 then
     npm install
 else
-    [ ! -d "node_modules" ] && npm ci
+    if [ ! -d "node_modules" ];
+    then
+        npm ci
+    fi
 fi
+
 $(npm bin)/nuxt
 
 exec "$@"
